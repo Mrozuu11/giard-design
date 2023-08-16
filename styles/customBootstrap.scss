@@ -1,0 +1,24 @@
+@import "bootstrap/scss/utilities";
+
+$utilities: map-merge(
+  $utilities,
+  (
+    "padding-x": (
+      responsive: true,
+      property: padding-right,
+      padding-left,
+      class: px,
+      values: (
+        0: 0,
+        1: 1rem,
+        2: 2rem,
+        3: 3rem,
+        4: 4rem,
+        5: 5rem,
+        6: 5.5rem,
+      ),
+    ),
+  )
+);
+
+@import "bootstrap/scss/utilities/api";
