@@ -1,19 +1,55 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
 :root {
+  /* font family variables */
   --heading-font: "Montserrat", sans-serif;
   --text-font: "Inter", sans-serif;
+
+  /* font size variables */
+  --heading-lg: 60px;
+  --heading-md: 48px;
+  --heading-sm: 28px;
+  --font-md: 14px;
+  --font-sm: 12px;
 }
 
 body {
   margin: 0;
   font-family: var(--text-font);
+  color: var(--black);
+}
+h1 {
+  font-size: var(--heading-lg);
+  line-height: 70px;
+}
+h2 {
+  font-size: var(--heading-md);
+}
+h3 {
+  font-size: var(--heading-sm);
+}
+a {
+  text-decoration: none;
+  color: inherit;
 }
 
 .heading {
   font-family: var(--heading-font);
+  font-weight: 500;
+}
+
+.nav {
+  font-size: var(--font-md);
+}
+
+.links {
+  font-size: var(--font-md);
 }
 .offer,
 .offer:hover {
-  color: var(--black, #111);
+  color: var(--black);
   background-color: white;
   border: none;
 }
