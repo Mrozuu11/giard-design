@@ -2,33 +2,18 @@
 @tailwind components;
 @tailwind utilities;
 
+/* reusable CSS is deinfed is this file - variables and tailwind custom classes */
+
 :root {
   /* font family variables */
   --heading-font: "Montserrat", sans-serif;
   --text-font: "Inter", sans-serif;
-
-  /* font size variables */
-  --heading-lg: 60px;
-  --heading-md: 48px;
-  --heading-sm: 28px;
-  --font-md: 14px;
-  --font-sm: 12px;
 }
-
+/* document styling  */
 body {
   margin: 0;
   font-family: var(--text-font);
   color: var(--black);
-}
-h1 {
-  font-size: var(--heading-lg);
-  line-height: 70px;
-}
-h2 {
-  font-size: var(--heading-md);
-}
-h3 {
-  font-size: var(--heading-sm);
 }
 a {
   text-decoration: none;
@@ -38,18 +23,29 @@ a {
 .heading {
   font-family: var(--heading-font);
   font-weight: 500;
+  line-height: 115%;
 }
-
-.nav {
-  font-size: var(--font-md);
+/* Custom classes with TailWind */
+h1 {
+  @apply text-3xl md:text-4xl xl:text-6xl;
 }
-
-.links {
-  font-size: var(--font-md);
+h2 {
+  @apply text-2xl lg:text-5xl;
 }
-.offer,
-.offer:hover {
-  color: var(--black);
-  background-color: white;
-  border: none;
+h3 {
+  @apply text-xl lg:text-[28px];
+}
+/* Dropdown classes */
+.show {
+  @apply opacity-100 w-auto pointer-events-auto;
+}
+.dropdown-link {
+  @apply block py-2 px-4 hover:bg-grey hover:text-green transition-colors duration-300;
+}
+.btn {
+  @apply transition-colors duration-500 hover:text-grey hover:font-bold;
+}
+/* Card styling  */
+#card {
+  @apply w-[378px] min-h-[370px] flex flex-col items-start py-12 px-10 bg-white rounded-3xl;
 }
