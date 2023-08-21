@@ -18,10 +18,10 @@
     <link rel="stylesheet" href="styles/customBootstrap.scss" />
   </head>
   <body>
-    <header>
+    <header class="fixed top-0 left-0 w-full md:static text-sm">
       <!-- Desktop Navbar -->
       <nav
-        class="hidden md:flex py-6 md:px-[88px] justify-between items-center text-sm"
+        class="hidden md:flex py-6 md:px-[88px] justify-between items-center"
       >
         <img src="images/giarddesign.svg" alt="giard-design" />
         <ul class="flex items-center gap-12">
@@ -74,34 +74,22 @@
         </ul>
       </nav>
       <!-- Hamburger Menu - Mobile -->
-      <nav id="hamburger" class="md:hidden h-screen w-1/2 bg-black">
-        <button class="fixed z-10 top-4 right-4 p-1">Open</button>
-        <ul
-          class="h-screen bg-black fixed top-20 right-0 z-10 p-4 flex flex-col items-center gap-12"
+      <nav id="hamburger" class="md:hidden">
+        <button
+          onclick="toggleHamburger()"
+          class="w-8 fixed z-100 top-4 right-4"
         >
-          <img src="images/giarddesign.svg" alt="giard-design" />
-
+          <img src="images/hamburger.png" alt="hamburger-menu" class="w-full" />
+        </button>
+        <ul
+          id="links"
+          class="translate-x-full fixed top-0 right-0 bg-white shadow-2xl w-1/2 flex flex-col items-center justify-center h-full gap-6 z-10 transition-all duration-500"
+        >
+          <a href="#home"
+            ><img src="images/giarddesign.svg" alt="giard-design" class="mb-10"
+          /></a>
           <li class="relative">
-            <button
-              onclick="toggleDropdown()"
-              id="dropdown-btn"
-              class="flex items-center hover:text-green transition-colors duration-300"
-            >
-              Oferta
-              <img
-                src="images/dropdown-icon.svg"
-                alt="open-dropdown"
-                id="dropdown-btn"
-              />
-            </button>
-            <div
-              id="dropdown-content"
-              class="dropdown opacity-0 pointer-events-none absolute top-[46px] z-30 bg-white pb-3 -left-1 rounded-b-md transition-all duration-300"
-            >
-              <a href="#offer" class="dropdown-link">Projekty</a>
-              <a href="#offer" class="dropdown-link">Wizualizacje</a>
-              <a href="#offer" class="dropdown-link">Realizacje</a>
-            </div>
+            <a href="#offer">Oferta</a>
           </li>
           <li class="hover:text-green transition-colors duration-300">
             <a href="#about">O firmie</a>
@@ -112,19 +100,19 @@
           <li class="hover:text-green transition-colors duration-300">
             <a href="#contact">Kontakt</a>
           </li>
-          <li class="flex items-center">
+          <li class="flex flex-col items-center gap-4">
             <button
-              onclick="toggleSearchbar()"
+              onclick="toggleHamburgerSearchbar()"
               class="hover:scale-110 transition duration-300"
             >
               <img src="images/search.svg" alt="search-icon" />
             </button>
             <input
-              id="search-bar"
+              id="search-bar-ham"
               disabled
               type="text"
               placeholder="Szukaj"
-              class="opacity-0 w-0 pl-2 z-30 transition-all duration-500 disabled:bg-white"
+              class="opacity-0 w-0 transition-all duration-500 disabled:bg-white"
             />
           </li>
         </ul>
@@ -157,7 +145,6 @@
                 >Zobacz nasze realizacje
                 <svg
                   class="group-hover/btn:fill-grey transition-colors duration-500"
-                  style="transform: rotate(90deg)"
                   width="16"
                   height="16"
                   viewBox="0 0 16 16"
@@ -165,8 +152,8 @@
                   xmlns="http://www.w3.org/2000/svg"
                 >
                   <path
-                    id="Vector"
-                    d="M7.99528 -1.20755e-06L7.09959 0.895696L13.5769 7.36358L-7.5502e-07 7.36358L-6.43745e-07 8.63642L13.5675 8.63642L7.09959 15.1043L7.99529 16L16 7.99529L7.99528 -1.20755e-06Z"
+                    d="M16 8.49529L15.1043 7.59959L8.63642 14.0769L8.63642 0.5L7.36358 0.5L7.36358 14.0675L0.895699 7.59959L9.54553e-08 8.49529L8.00471 16.5L16 8.49529Z"
+                    fill="#1B5B31"
                   />
                 </svg>
               </a>
@@ -193,7 +180,11 @@
           class="px-10 lg:px-[88px] flex flex-wrap items-center justify-center gap-16"
         >
           <div id="card">
-            <img src="images/Projects.svg" alt="projects-icon" />
+            <img
+              src="images/Projects.svg"
+              alt="projects-icon"
+              class="thumbnail"
+            />
             <h3 class="heading pt-8 pb-3">Projekty</h3>
             <div>
               Zaprojektujemy Twój ogród w nowoczesnym stylu i z najlepszym
@@ -325,6 +316,77 @@
           <div class="text-xs pb-4 text-green">Realizacje</div>
           <h2 class="heading">Nasze <i>projekty</i></h2>
         </div>
+        <div class="grid my-0 mx-auto">
+          <div class="grid-item mb-[42px]">
+            <img
+              src="images/projects/photo.png"
+              alt="project-photo"
+              class="thumbnail"
+            />
+          </div>
+          <div class="grid-item mb-[42px]">
+            <img
+              src="images/projects/photo2.png"
+              alt="project-photo"
+              class="thumbnail"
+            />
+          </div>
+          <div class="grid-item mb-[42px]">
+            <img
+              src="images/projects/photo3.png"
+              alt="project-photo"
+              class="thumbnail"
+            />
+          </div>
+          <div class="grid-item mb-[42px]">
+            <img
+              src="images/projects/photo5.png"
+              alt="project-photo"
+              class="thumbnail"
+            />
+          </div>
+          <div class="grid-item mb-[42px]">
+            <img
+              src="images/projects/photo6.png"
+              alt="project-photo"
+              class="thumbnail"
+            />
+          </div>
+          <div class="grid-item mb-[42px]">
+            <img
+              src="images/projects/photo4.png"
+              alt="project-photo"
+              class="thumbnail"
+            />
+          </div>
+          <div class="grid-item mb-[42px]">
+            <img
+              src="images/projects/photo8.png"
+              alt="project-photo"
+              class="thumbnail"
+            />
+          </div>
+          <div class="grid-item mb-[42px]">
+            <img
+              src="images/projects/photo7.png"
+              alt="project-photo"
+              class="thumbnail"
+            />
+          </div>
+          <div class="grid-item mb-[42px]">
+            <img
+              src="images/projects/photo9.png"
+              alt="project-photo"
+              class="thumbnail"
+            />
+          </div>
+        </div>
+        <div id="gallery-overlay" class="fixed top-0 left-0 w-full h-full z-10 bg-grey hidden opacity-0 transition-all duration-300">
+          <div id="overlay-container" class="relative h-full flex items-center">
+            <img id="overlay-img" class="overlay-img relative block max-w-xl w-full border-2 my-0 mx-auto"></img>
+          <div id="overlay-close" class="absolute right-4 top-4 p-4 border-2 bg-white cursor-pointer text-4xl font-bold hover:scale-110 hover:shadow-2xl">X</div>
+          </div>
+        </div>
       </section>
 
       <section
@@ -421,5 +483,6 @@
     </footer>
   </body>
 </html>
+<script src="https://unpkg.com/masonry-layout@4/dist/masonry.pkgd.min.js"></script>
 <!-- GLOBAL JS -->
 <script src="script.js"></script>
