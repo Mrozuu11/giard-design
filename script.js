@@ -2,22 +2,19 @@
 const toggleDropdown = () => {
   document.getElementById("dropdown-content").classList.toggle("show");
 };
+
 //Clickaway close function
 window.onclick = function (event) {
   if (!event.target.matches("#dropdown-btn")) {
     let dropdowns = document.getElementsByClassName("dropdown");
-    var i;
-    for (i = 0; i < dropdowns.length; i++) {
-      var openDropdown = dropdowns[i];
-      if (openDropdown.classList.contains("show")) {
-        openDropdown.classList.remove("show");
+    for (let dropdown of dropdowns) {
+      if (dropdown.classList.contains("show")) {
+        dropdown.classList.remove("show");
       }
     }
-    // dropdown.map(
-    //     (item) => item.classList.contains("show") && item.classList.remove("show")
-    //   );
   }
 };
+
 //Searchbar
 const toggleSearchbar = () => {
   document.getElementById("search-bar").classList.toggle("show");
@@ -30,6 +27,69 @@ const toggleHamburger = () => {
   document.getElementById("links").classList.toggle("expand");
 };
 
+//Slider
+currentSlideId = 1;
+slider = document.getElementById("slider");
+totalSlides = slider.childElementCount;
+console.log(totalSlides);
+console.log(currentSlideId);
+console.log(slider);
+
+const showSlide = () => {
+  const slides = document.getElementById("slider").getElementsByTagName("li");
+  for (let i = 0; i < totalSlides; i++) {
+    const element = slides[i];
+    if (currentSlideId === i + 1) {
+      element.classList.remove("hidden");
+    } else {
+      element.classList.add("hidden");
+    }
+  }
+};
+
+const nextSlide = () => {
+  if (totalSlides > currentSlideId) {
+    currentSlideId++;
+    showSlide();
+  }
+};
+
+const prev = () => {
+  if (currentSlideId >= 2) {
+    currentSlideId--;
+    showSlide();
+  }
+};
+
+//Modal
+
+let modal = document.getElementById("modal");
+let modalClose = document.getElementById("modal-close");
+
+const closeModal = () => {
+  modal.classList.toggle("open");
+};
+
+const toggleModal = () => {
+  modal.classList.toggle("open");
+};
+
+modalClose.addEventListener("click", closeModal);
+
+//Gallery expand button
+const galleryBtn = document.getElementById("expand-btn");
+const toggleGallery = () => {
+  const initialText = "Rozwiń";
+  document.getElementById("masonry").classList.toggle("gallery-expand");
+  if (
+    galleryBtn.textContent.toLowerCase().includes(initialText.toLowerCase())
+  ) {
+    galleryBtn.textContent = "Zwiń";
+  } else {
+    galleryBtn.textContent = initialText;
+  }
+};
+
 //Gallery Popup adapted from https://codepen.io/lave0172/pen/xqQryG
 
 let thumbnails = document.getElementsByClassName("thumbnail");
@@ -37,31 +97,20 @@ let overlay = document.getElementById("gallery-overlay");
 let overlayClose = document.getElementById("overlay-close");
 let overlayImage = document.getElementById("overlay-img");
 
-for (let i = 0; i < thumbnails.length; i++) {
-  //    console.log(thumbnails[i].src)
-  thumbnails[i].addEventListener("click", openOverlay);
-}
-
-overlayClose.addEventListener("click", closeOverlay);
-
-overlay.addEventListener("keydown", overlay);
-overlayClose.addEventListener("click", closeOverlay);
-
-function closeOverlay(event) {
-  if (event.keyCode !== 27) {
-    return;
-  }
+const closeOverlay = () => {
   overlay.classList.toggle("open");
-}
+};
 
-function closeOverlay(event) {
-  overlay.classList.toggle("open");
-}
-
-function openOverlay(event) {
+const openOverlay = (event) => {
   overlay.classList.toggle("open");
   overlayImage.src = event.target.src;
+};
+
+for (let thumbnail of thumbnails) {
+  thumbnail.addEventListener("click", openOverlay);
 }
+
+overlayClose.addEventListener("click", closeOverlay);
 
 //Masonry initialisation
 const elem = document.querySelector(".grid");

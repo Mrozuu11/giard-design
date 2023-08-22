@@ -12,10 +12,10 @@
       href="https://fonts.googleapis.com/css2?family=Inter&family=Montserrat"
       rel="stylesheet"
     />
+    <!-- TailWind -->
     <link href="/dist/output.css" rel="stylesheet" />
     <!-- GLOBAL CSS -->
     <link rel="stylesheet" href="styles/index.css" />
-    <link rel="stylesheet" href="styles/customBootstrap.scss" />
   </head>
   <body>
     <header class="fixed top-0 left-0 w-full md:static text-sm">
@@ -77,7 +77,7 @@
       <nav id="hamburger" class="md:hidden">
         <button
           onclick="toggleHamburger()"
-          class="w-8 fixed z-100 top-4 right-4"
+          class="w-8 fixed z-30 top-4 right-4"
         >
           <img src="images/hamburger.png" alt="hamburger-menu" class="w-full" />
         </button>
@@ -120,49 +120,123 @@
     </header>
 
     <main>
-      <!-- //TODO the whole home section must be a slider/carousel -->
       <section
         id="home"
-        class="lg:grid grid-cols-2 gap-16 items-center bg-beige"
+        class="relative"
       >
-        <div class="px-10 md:px-20 lg:px-0 py-16 lg:py-0 lg:pl-[88px]">
-          <h1 class="heading">Nowoczesna aranżacja Twojego ogrodu</h1>
-          <div class="pt-8 lg:pt-11 pb-10 lg:pb-[72px]">
-            Marka GiardDesign to wieloletnie doświadczenie i wysoka estetyka
-            realizacji. Oferujemy kompleksowy zakres usług z indywidualnym
-            podejściem do każdego projektu.
-          </div>
-          <div class="flex gap-4 lg:gap-9 flex-wrap">
-            <button
-              class="btn px-6 py-3 rounded-3xl bg-green text-grey hover:bg-grey hover:text-green"
-            >
-              <a href="#contact">Skontaktuj się z nami</a>
-            </button>
-            <button
-              class="btn group/btn px-6 py-3 rounded-3xl border-[1px] border-green text-green hover:bg-green hover:text-grey"
-            >
-              <a href="#projects" class="flex gap-2 items-center"
-                >Zobacz nasze realizacje
-                <svg
-                  class="group-hover/btn:fill-grey transition-colors duration-500"
-                  width="16"
-                  height="16"
-                  viewBox="0 0 16 16"
-                  fill="#1b5b31"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  <path
-                    d="M16 8.49529L15.1043 7.59959L8.63642 14.0769L8.63642 0.5L7.36358 0.5L7.36358 14.0675L0.895699 7.59959L9.54553e-08 8.49529L8.00471 16.5L16 8.49529Z"
-                    fill="#1B5B31"
-                  />
-                </svg>
-              </a>
-            </button>
-          </div>
-        </div>
-        <div>
-          <img src="images/Main.png" alt="garden-photo" class="md:w-full" />
-        </div>
+      <div class="absolute flex gap-8 bottom-0 right-0 z-10 bg-grey py-6 px-8">
+        <button onclick="prev()">
+        <img src="images/Arrow-left.svg" alt="slide-left"></button>
+        <button onclick="nextSlide()"><img src="images/Arrow-right.svg" alt="slide-right"></button>
+      </div>
+          <ul id="slider" >
+            <li class="relative slide">
+              <div class="lg:grid grid-cols-2 gap-16 items-center bg-beige">
+                <div class="px-10 md:px-20 lg:px-0 py-16 lg:py-0 lg:pl-[88px]">
+                  <h1 class="heading">Nowoczesna aranżacja Twojego ogrodu</h1>
+                  <div class="pt-8 lg:pt-11 pb-10 lg:pb-[72px]">
+                    Marka GiardDesign to wieloletnie doświadczenie i wysoka estetyka
+                    realizacji. Oferujemy kompleksowy zakres usług z indywidualnym
+                    podejściem do każdego projektu.
+                  </div>
+                  <div class="flex gap-4 lg:gap-9 flex-wrap">
+                    <button
+                      class="btn px-6 py-3 rounded-3xl bg-green text-grey hover:bg-grey hover:text-green"
+                    >
+                      <a href="#contact">Skontaktuj się z nami</a>
+                    </button>
+                    <button
+                      class="btn group/btn px-6 py-3 rounded-3xl border-[1px] border-green text-green hover:bg-green hover:text-grey"
+                    >
+                      <a href="#projects" class="flex gap-2 items-center"
+                        >Zobacz nasze realizacje
+                        <svg
+                          class="group-hover/btn:fill-grey transition-colors duration-500"
+                          width="16"
+                          height="16"
+                          viewBox="0 0 16 16"
+                          fill="#1b5b31"
+                          xmlns="http://www.w3.org/2000/svg"
+                        >
+                          <path
+                            d="M16 8.49529L15.1043 7.59959L8.63642 14.0769L8.63642 0.5L7.36358 0.5L7.36358 14.0675L0.895699 7.59959L9.54553e-08 8.49529L8.00471 16.5L16 8.49529Z"
+                            
+                          />
+                        </svg>
+                      </a>
+                    </button>
+                  </div>
+                </div>
+                <div>
+                  <img src="images/Main.png" alt="garden-photo" class="md:w-full" />
+                </div>
+              </div>
+            </li>
+    
+            <li class="relative hidden slide">
+              <div class="item lg:grid grid-cols-2 gap-16 items-center bg-green text-grey">
+                <div>
+                  <img src="images/Main.png" alt="garden-photo" class="md:w-full" />
+                </div>
+                <div class="px-10 md:px-20 lg:px-0 py-16 lg:py-0 lg:pr-[88px]">
+                  <h1 class="heading">Zadbamy o  <i>Twój</i> ogród</h1>
+                  <div class="pt-8 lg:pt-11 pb-10 lg:pb-[72px]">
+                    Marka GiardDesign to wieloletnie doświadczenie i wysoka estetyka
+                    realizacji. Oferujemy kompleksowy zakres usług z indywidualnym
+                    podejściem do każdego projektu.
+                  </div>
+                  <div class="flex gap-4 lg:gap-9 flex-wrap">
+                    <button
+                      class="btn px-6 py-3 rounded-3xl bg-green text-grey border-[1px] border-grey hover:bg-grey hover:text-green"
+                    >
+                      <a href="#offer">Zobacz naszą ofertę</a>
+                    </button>
+                    
+                  </div>
+                </div>
+              </div>
+            </li>
+    
+           <li class="relative hidden slide">
+            <div class="item lg:grid grid-cols-2 gap-16 items-center bg-white">
+              <div class="px-10 md:px-20 lg:px-0 py-16 lg:py-0 lg:pl-[88px]">
+                <h1 class="heading">Poznaj nas lepiej!</h1>
+                <div class="pt-8 lg:pt-11 pb-10 lg:pb-[72px]">
+                  Marka GiardDesign to wieloletnie doświadczenie i wysoka estetyka
+                  realizacji. Oferujemy kompleksowy zakres usług z indywidualnym
+                  podejściem do każdego projektu.
+                </div>
+                <div class="flex gap-4 lg:gap-9 flex-wrap">
+                  
+                  <button
+                    class="btn group/btn px-6 py-3 rounded-3xl border-[1px] border-green text-green hover:bg-green hover:text-grey"
+                  >
+                    <a href="#projects" class="flex gap-2 items-center"
+                      >O nas
+                      <svg
+                        class="group-hover/btn:fill-grey transition-colors duration-500"
+                        width="16"
+                        height="16"
+                        viewBox="0 0 16 16"
+                        fill="#1b5b31"
+                        xmlns="http://www.w3.org/2000/svg"
+                      >
+                        <path
+                          d="M16 8.49529L15.1043 7.59959L8.63642 14.0769L8.63642 0.5L7.36358 0.5L7.36358 14.0675L0.895699 7.59959L9.54553e-08 8.49529L8.00471 16.5L16 8.49529Z"
+                          
+                        />
+                      </svg>
+                    </a>
+                  </button>
+                </div>
+              </div>
+              <div>
+                <img src="images/Main.png" alt="garden-photo" class="md:w-full" />
+              </div>
+            </div>
+           </li>
+          </ul>
+        
       </section>
 
       <section id="offer" class="bg-grey pt-14 lg:pt-[120px] pb-14 lg:pb-40">
@@ -190,8 +264,8 @@
               Zaprojektujemy Twój ogród w nowoczesnym stylu i z najlepszym
               wykorzystaniem istniejącej przestrzeni.
             </div>
-            <button
-              class="mt-auto flex items-center gap-[10px] text-green border-b-[1px] border-green"
+            <button onclick="toggleModal()"
+              class="mt-auto flex items-center gap-[10px] text-green border-b-[1px] border-green hover:scale-110 transition-transform duration-300"
             >
               <div>Dowiedz się więcej</div>
               <svg
@@ -217,8 +291,8 @@
               Przedstawimy Ci projekty koncepcyjne w postaci wirtualnego spaceru
               animowanego w technologii 3D.
             </div>
-            <button
-              class="mt-auto flex items-center gap-[10px] text-green border-b-[1px] border-green"
+            <button onclick="toggleModal()"
+              class="mt-auto flex items-center gap-[10px] text-green border-b-[1px] border-green hover:scale-110 transition-transform duration-300"
             >
               <div>Dowiedz się więcej</div>
               <svg
@@ -244,9 +318,8 @@
               Zrealizujemy Twoje marzenie przy użyciu najnowszych rozwiązań i
               zaawansowanych technologii.
             </div>
-            <!-- //TODO make it clickable (maybe display a modal) + hover effects -->
-            <button
-              class="mt-auto flex items-center gap-[10px] text-green border-b-[1px] border-green"
+            <button onclick="toggleModal()"
+              class="mt-auto flex items-center gap-[10px] text-green border-b-[1px] border-green hover:scale-110 transition-transform duration-300"
             >
               <div>Dowiedz się więcej</div>
               <svg
@@ -263,6 +336,14 @@
                 />
               </svg>
             </button>
+          </div>
+          <div id="modal" class="fixed top-0 left-0 w-full h-full z-50 bg-beige hidden opacity-0 transition-all duration-300">
+            <div id="modal-container" class="modal-container relative h-full p-10 flex flex-col items-center justify-center gap-6 md:gap-10">
+              <h2 class="heading">Pozwól nam zająć się <i>Twoim</i> ogrodem!</h2>
+              <div class="md:w-1/2">Oferujemy kompletną obsługę inwestycji terenów zielonych. Projektujemy nowoczesne ogrody przydomowe oraz rezydencjonalne. Stworzymy dla Ciebie projekt, zwizualizujemy go i wcielimy w życie, a na każdym etapie posłużymy radą i wieloletnim doświadczeniem.</div>
+              <img id="modal-img" src="images/projects/photo3.png" class="relative block max-w-xl w-full border-2 my-0 mx-auto rounded-2xl"></img>
+            <div id="modal-close" class="absolute right-4 top-4 p-2 border-2 bg-white cursor-pointer text-4xl font-bold rounded-xl hover:scale-110 hover:shadow-2xl">X</div>
+            </div>
           </div>
         </div>
       </section>
@@ -291,32 +372,84 @@
             >
               <a href="#contact" class="flex items-center gap-2"
                 >Poznaj nas bliżej
-                <svg
-                  class="group-hover/btn:fill-green transition-colors duration-500"
-                  style="transform: rotate(90deg)"
-                  width="16"
-                  height="16"
-                  viewBox="0 0 16 16"
-                  fill="#f5f0ec"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  <path
-                    id="Vector"
-                    d="M7.99528 -1.20755e-06L7.09959 0.895696L13.5769 7.36358L-7.5502e-07 7.36358L-6.43745e-07 8.63642L13.5675 8.63642L7.09959 15.1043L7.99529 16L16 7.99529L7.99528 -1.20755e-06Z"
-                  />
-                </svg>
+                <svg class="fill-grey group-hover/btn:fill-green transition-colors duration-500" width="16" height="17" viewBox="0 0 16 17" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M16 8.49529L15.1043 7.59959L8.63642 14.0769L8.63642 0.5L7.36358 0.5L7.36358 14.0675L0.895699 7.59959L9.54553e-08 8.49529L8.00471 16.5L16 8.49529Z" />
+                  </svg>
               </a>
             </button>
           </div>
         </div>
       </section>
 
-      <section id="projects" class="bg-beige">
+      <section id="projects" class="bg-beige relative pb-11">
         <div class="pt-[120px] pb-24 px-10 md:px-20 lg:px-40">
           <div class="text-xs pb-4 text-green">Realizacje</div>
           <h2 class="heading">Nasze <i>projekty</i></h2>
         </div>
-        <div class="grid my-0 mx-auto">
+        <div id="masonry" class="masonry grid my-0 mx-auto overflow-hidden transition-all duration-500">
+          <div class="grid-item mb-[42px]">
+            <img
+              src="images/projects/photo.png"
+              alt="project-photo"
+              class="thumbnail"
+            />
+          </div>
+          <div class="grid-item mb-[42px]">
+            <img
+              src="images/projects/photo2.png"
+              alt="project-photo"
+              class="thumbnail"
+            />
+          </div>
+          <div class="grid-item mb-[42px]">
+            <img
+              src="images/projects/photo3.png"
+              alt="project-photo"
+              class="thumbnail"
+            />
+          </div>
+          <div class="grid-item mb-[42px]">
+            <img
+              src="images/projects/photo5.png"
+              alt="project-photo"
+              class="thumbnail"
+            />
+          </div>
+          <div class="grid-item mb-[42px]">
+            <img
+              src="images/projects/photo6.png"
+              alt="project-photo"
+              class="thumbnail"
+            />
+          </div>
+          <div class="grid-item mb-[42px]">
+            <img
+              src="images/projects/photo4.png"
+              alt="project-photo"
+              class="thumbnail"
+            />
+          </div>
+          <div class="grid-item mb-[42px]">
+            <img
+              src="images/projects/photo8.png"
+              alt="project-photo"
+              class="thumbnail"
+            />
+          </div>
+          <div class="grid-item mb-[42px]">
+            <img
+              src="images/projects/photo7.png"
+              alt="project-photo"
+              class="thumbnail"
+            />
+          </div>
+          <div class="grid-item mb-[42px]">
+            <img
+              src="images/projects/photo9.png"
+              alt="project-photo"
+              class="thumbnail"
+            />
+          </div>
           <div class="grid-item mb-[42px]">
             <img
               src="images/projects/photo.png"
@@ -381,10 +514,15 @@
             />
           </div>
         </div>
-        <div id="gallery-overlay" class="fixed top-0 left-0 w-full h-full z-10 bg-grey hidden opacity-0 transition-all duration-300">
+        <!-- Expand Section Button -->
+        <button id="expand-btn" onclick="toggleGallery()" class="absolute bottom-[90px] left-1/2 -translate-x-1/2 flex items-center gap-2 py-3 px-[22px] border-[1px] border-black rounded-3xl z-50">Rozwiń <svg width="16" height="17" viewBox="0 0 16 17" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M16 8.49529L15.1043 7.59959L8.63642 14.0769L8.63642 0.5L7.36358 0.5L7.36358 14.0675L0.895699 7.59959L9.54553e-08 8.49529L8.00471 16.5L16 8.49529Z" fill="#111111"/>
+          </svg></button>
+        <!-- Gallery Overlay -->
+        <div id="gallery-overlay" class="fixed top-0 left-0 w-full h-full z-50 bg-grey hidden opacity-0 transition-all duration-300">
           <div id="overlay-container" class="relative h-full flex items-center">
-            <img id="overlay-img" class="overlay-img relative block max-w-xl w-full border-2 my-0 mx-auto"></img>
-          <div id="overlay-close" class="absolute right-4 top-4 p-4 border-2 bg-white cursor-pointer text-4xl font-bold hover:scale-110 hover:shadow-2xl">X</div>
+            <img id="overlay-img" class="overlay-img relative block max-w-xl w-full border-2 my-0 mx-auto rounded-2xl"></img>
+          <div id="overlay-close" class="absolute right-4 top-4 p-2 border-2 bg-white cursor-pointer text-4xl font-bold rounded-xl hover:scale-110 hover:shadow-2xl">X</div>
           </div>
         </div>
       </section>
@@ -406,7 +544,7 @@
                 Śledź nasze <br />
                 najnowsze realizacje!
               </div>
-              <button class="mt-6 px-6 py-3 rounded-3xl bg-grey text-green">
+              <button class="btn border-[1px] mt-6 px-6 py-3 rounded-3xl bg-grey text-green hover:bg-green hover:text-grey hover:border-grey">
                 <a
                   href="https://www.instagram.com/"
                   noopener
@@ -483,6 +621,7 @@
     </footer>
   </body>
 </html>
+<!-- Masonry script -->
 <script src="https://unpkg.com/masonry-layout@4/dist/masonry.pkgd.min.js"></script>
 <!-- GLOBAL JS -->
 <script src="script.js"></script>
